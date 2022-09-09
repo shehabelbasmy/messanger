@@ -1,16 +1,33 @@
 package main.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import lombok.Data;
 
 
-@NoArgsConstructor
-@AllArgsConstructor
-public abstract class AbstractEntity  extends CreationEntity{
+@MappedSuperclass
+@Data
+public abstract class AbstractEntity{
 
-	@Setter
-	protected Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id")
+	private Long id;
+
+	@Column(name = "created_at",updatable = false)
+	@CreationTimestamp
+	private  LocalDateTime createdAt;
 	
-	public abstract Long getId();
+	@Column(name = "updated_at",updatable = true)
+	@UpdateTimestamp	
+	private LocalDateTime updatedAt;
 }

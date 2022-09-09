@@ -1,16 +1,13 @@
 package main.entity;
 
-import java.util.List;
+import java.util.Set;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -19,30 +16,31 @@ import javax.persistence.Table;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
+import main.enums.ChatType;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name="chat")
-@Access(AccessType.FIELD)
 public class Chat extends AbstractEntity {
 
 	@ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-	@JoinTable(name = "user_chat",
+	@JoinTable(name = "user-chat",
 			joinColumns = @JoinColumn(name="chat_id"),
 			inverseJoinColumns = @JoinColumn(name="user_id"))
-	private List<User> user;
+	private Set<User> receivers;
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "chat")
-	private List<Message> messages;
+	@ToString.Exclude
+	private Set<Message> messages;
 	
-	@Override
-	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Access(AccessType.PROPERTY)
-	public Long getId() {
-		return id;
-	}
+	@Column(name = "name")
+	private String name;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name = "type",nullable = false)
+	private ChatType type;
+
 
 }

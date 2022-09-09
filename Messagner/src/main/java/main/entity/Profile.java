@@ -2,17 +2,12 @@ package main.entity;
 
 import java.time.LocalDate;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -25,7 +20,6 @@ import main.enums.Gender;
 @Table(name="profile")
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Access(AccessType.FIELD)
 public class Profile extends AbstractEntity {
 
 	@Column(name = "first_name",nullable = true)
@@ -44,14 +38,5 @@ public class Profile extends AbstractEntity {
 	@OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
 	private User user;
-	
-	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Access(AccessType.PROPERTY)
-	@Override
-	public Long getId() {
-		return id;
-	}
 
 }
