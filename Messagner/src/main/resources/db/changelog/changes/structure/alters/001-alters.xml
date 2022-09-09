@@ -1,14 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>	
-<databaseChangeLog
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
 	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
-	xmlns:pro="http://www.liquibase.org/xml/ns/pro"
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
 		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
-		
-	<include file="/db/changelog/changes/structure/tables/001-initial-DB-tables.xml"/>
-	<include file="/db/changelog/changes/structure/alters/001-alters.xml"/>
+
+	<changeSet id="add-blocked-field-to-profile-entity" author="shehabelbasmy">
+		<sqlFile path="/db/changelog/changes/structure/alters/add-blocked-field-to-profile-entity.sql" />
+	</changeSet>
+	
 </databaseChangeLog>
