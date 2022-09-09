@@ -14,6 +14,7 @@ import javax.persistence.Table;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import main.enums.Gender;
 
 @Entity
@@ -37,6 +38,10 @@ public class Profile extends AbstractEntity {
 	
 	@OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id")
+	@ToString.Exclude
 	private User user;
+	
+	@Column(name="blocked",nullable = false,updatable = true)
+	private Boolean isBlocked = Boolean.FALSE;
 
 }
