@@ -36,7 +36,7 @@ public class SecurityConfig{
 			.and()
 			.logout()
 			.logoutUrl("/logout")
-			.logoutSuccessUrl("/sign")
+			.logoutSuccessUrl("/signin")
 			.invalidateHttpSession(true)
 			.and()
 			.sessionManagement()
@@ -45,6 +45,7 @@ public class SecurityConfig{
 			http.authenticationProvider(dao());
 		return http.build();
 	}
+	
 	@Bean
 	public AuthenticationProvider dao() {
 		DaoAuthenticationProvider dao = new DaoAuthenticationProvider();
