@@ -3,7 +3,6 @@ package main.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
-import org.mapstruct.ValueMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -21,9 +20,6 @@ public abstract  class UserMapper {
 	@Mapping(target = "profile.firstName",source =  "firstName")
 	@Mapping(target = "profile.birthDate",source =  "birthDate")
 	@Mapping(target = "profile.gender",source =  "gender")
-//	@Mapping(target = "role", expression =  "java(main.enums.Role.USER)")
-	@ValueMapping(source = "role",target = "USER")
+	@Mapping(target = "role",expression = "java(main.enums.Role.USER)")
 	public abstract Person voToEntity(SignupUserVo newUser);
-	
-	
 }
