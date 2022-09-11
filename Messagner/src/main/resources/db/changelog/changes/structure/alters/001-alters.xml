@@ -6,10 +6,10 @@
 		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-	<changeSet id="add-blocked-field-to-profile-entity" author="shehabelbasmy">
+<!-- 	<changeSet id="add-blocked-field-to-profile-entity" author="shehabelbasmy">
 		<sqlFile path="/db/changelog/changes/structure/alters/add-blocked-field-to-profile-entity.sql" />
 	</changeSet>
 	<changeSet id="change-datatype-of-password-on-table-user" author="shehabelbasmy">
 		<sqlFile path="/db/changelog/changes/structure/alters/change-datatype-of-password-on-table-user.sql" />
-	</changeSet>
+	</changeSet> -->
 </databaseChangeLog>

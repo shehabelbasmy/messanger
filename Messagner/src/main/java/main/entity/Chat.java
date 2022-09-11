@@ -26,10 +26,10 @@ import main.enums.ChatType;
 public class Chat extends AbstractEntity {
 
 	@ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
-	@JoinTable(name = "user-chat",
+	@JoinTable(name = "person-chat",
 			joinColumns = @JoinColumn(name="chat_id"),
-			inverseJoinColumns = @JoinColumn(name="user_id"))
-	private Set<User> receivers;
+			inverseJoinColumns = @JoinColumn(name="person_id"))
+	private Set<Person> receivers;
 	
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "chat")
 	@ToString.Exclude

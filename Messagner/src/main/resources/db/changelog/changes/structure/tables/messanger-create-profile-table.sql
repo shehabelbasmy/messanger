@@ -4,10 +4,11 @@ create table `profile`(
     `last_name` varchar(45) default null,
     `gender` varchar(20) default null,
     `birth_date` Date default null,
-    `user_id` bigint not null,
+    `person_id` bigint not null,
 	`created_at` datetime not null,
     `updated_at` datetime not null,
+    `blocked` bit(1) default b'0',
     primary key (`id`),
-    key `INDX_USER_ID`(`user_id`),
-    constraint `FK_USER_PROFILE` foreign key (`user_id`) references `user` (`id`) on update cascade on delete cascade
+    key `INDX_PERSON_ID`(`person_id`),
+    constraint `FK_USER_PROFILE` foreign key (`person_id`) references `person` (`id`) on update cascade on delete cascade
 );

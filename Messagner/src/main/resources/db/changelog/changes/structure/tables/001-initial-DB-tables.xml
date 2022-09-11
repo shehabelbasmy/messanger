@@ -6,8 +6,8 @@
 		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-	<changeSet id="messanger-create-user-table" author="shehabelbasmy">
-		<sqlFile path="/db/changelog/changes/structure/tables/messanger-create-user-table.sql" />
+	<changeSet id="messanger-create-person-table" author="shehabelbasmy">
+		<sqlFile path="/db/changelog/changes/structure/tables/messanger-create-person-table.sql" />
 	</changeSet>
 	<changeSet id="messanger-create-profile-table" author="shehabelbasmy">
 		<sqlFile path="/db/changelog/changes/structure/tables/messanger-create-profile-table.sql" />
@@ -15,8 +15,8 @@
 	<changeSet id="messanger-create-chat-table" author="shehabelbasmy">
 		<sqlFile path="/db/changelog/changes/structure/tables/messanger-create-chat-table.sql" />
 	</changeSet>
-	<changeSet id="messanger-create-user-chat-table" author="shehabelbasmy">
-		<sqlFile path="/db/changelog/changes/structure/tables/messanger-create-user-chat-table.sql" />
+	<changeSet id="messanger-create-person-chat-table" author="shehabelbasmy">
+		<sqlFile path="/db/changelog/changes/structure/tables/messanger-create-person-chat-table.sql" />
 	</changeSet>
 	<changeSet id="messanger-create-message-table" author="shehabelbasmy">
 		<sqlFile path="/db/changelog/changes/structure/tables/messanger-create-message-table.sql" />

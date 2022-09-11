@@ -20,10 +20,10 @@ import lombok.ToString;
 import main.enums.Role;
 
 @Entity
-@Table(name="`user`")
+@Table(name="`person`")
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class User extends AbstractEntity {
+public class Person extends AbstractEntity {
 
 	@Column(name="password",nullable = false)
 	private String password;
@@ -31,7 +31,7 @@ public class User extends AbstractEntity {
 	@Column(name="email",nullable = false,unique = true)
 	private String email;
 	
-	@OneToOne(mappedBy = "user",fetch = FetchType.LAZY
+	@OneToOne(mappedBy = "person",fetch = FetchType.LAZY
 			,cascade = CascadeType.ALL)
 	private Profile profile;
 	
@@ -40,7 +40,7 @@ public class User extends AbstractEntity {
 	private Role role;
 	
 	@ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinTable(name="user-chat",joinColumns = @JoinColumn(name="user_id"),inverseJoinColumns = @JoinColumn(name="chat_id"))
+	@JoinTable(name="person-chat",joinColumns = @JoinColumn(name="person_id"),inverseJoinColumns = @JoinColumn(name="chat_id"))
 	@ToString.Exclude
 	private Set<Chat> chats;
 

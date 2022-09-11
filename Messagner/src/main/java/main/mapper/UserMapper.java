@@ -3,11 +3,12 @@ package main.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
+import org.mapstruct.ValueMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import main.dto.SignupUserVo;
-import main.entity.User;
+import main.entity.Person;
 
 @Mapper(componentModel = "spring",unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public abstract  class UserMapper {
@@ -20,8 +21,9 @@ public abstract  class UserMapper {
 	@Mapping(target = "profile.firstName",source =  "firstName")
 	@Mapping(target = "profile.birthDate",source =  "birthDate")
 	@Mapping(target = "profile.gender",source =  "gender")
-	@Mapping(target = "role", expression =  "java(main.enums.Role.USER)")
-	public abstract User voToEntity(SignupUserVo newUser);
+//	@Mapping(target = "role", expression =  "java(main.enums.Role.USER)")
+	@ValueMapping(source = "role",target = "USER")
+	public abstract Person voToEntity(SignupUserVo newUser);
 	
 	
 }

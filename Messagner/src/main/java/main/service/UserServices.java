@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 import main.dao.UserRepository;
 import main.dto.SignupUserVo;
 import main.entity.Profile;
-import main.entity.User;
+import main.entity.Person;
 import main.mapper.UserMapper;
 import main.vo.SpringUser;
 
@@ -25,17 +25,17 @@ public class UserServices implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userRepository.findByEmail(username)
+		Person user = userRepository.findByEmail(username)
 				.orElseThrow(()->new UsernameNotFoundException("Incorrect Username or Password"));
 		return new SpringUser(user);
 	}
 	
 	
-	public void addNewUser(SignupUserVo user) {
-		User theUser= userMapper.voToEntity(user);
-		Profile profile= theUser.getProfile();
-		profile.setUser(theUser);
-		userRepository.save(theUser);
+	public void addNewUser(SignupUserVo person) {
+		Person thePerson= userMapper.voToEntity(person);
+		Profile profile= thePerson.getProfile();
+		profile.setPerson(thePerson);
+		userRepository.save(thePerson);
 	}
 
 }

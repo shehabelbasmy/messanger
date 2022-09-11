@@ -9,13 +9,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import main.entity.User;
+import main.entity.Person;
 
 @AllArgsConstructor
 @NoArgsConstructor
 public class SpringUser implements UserDetails {
 
-	private User user;
+	private Person user;
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -6,8 +6,8 @@ create table `message`(
     `chat_id` bigint not null,
     `text` blob not null,
     primary key (`id`),
-    key `INDX_USER_ID`(`sender_id`),
+    key `INDX_PERSON_ID`(`sender_id`),
     key `INDX_CHAT_ID`(`chat_id`),
-    constraint `FK_FROM_USER_MESSAGE` foreign key (`sender_id`)  references `user`(`id`),
+    constraint `FK_FROM_PERSON_MESSAGE` foreign key (`sender_id`)  references `person`(`id`),
     constraint `FK_CHAT_MESSAGE` foreign key (`chat_id`) references`chat`(`id`)
 );

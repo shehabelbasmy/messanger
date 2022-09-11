@@ -37,9 +37,9 @@ public class Profile extends AbstractEntity {
 	private LocalDate birthDate;
 	
 	@OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id")
+	@JoinColumn(name = "person_id")
 	@ToString.Exclude
-	private User user;
+	private Person person;
 	
 	@Column(name="blocked",nullable = false,updatable = true)
 	private Boolean isBlocked = Boolean.FALSE;
