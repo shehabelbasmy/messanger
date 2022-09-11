@@ -1,19 +1,61 @@
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-
 </head>
 <body>
-	<form th:action="@{/login}" method="POST">
+	<form th:action="@{/signupHandler}" method="POST" th:object="${user}">
+
 		<div>
-			<label>Email</label> 
-			<input type="text" th:required="ture" name="*{email}"><br>
+			<label>Firstname</label> <input th:field="*{firstName}" type="text">
+		</div>
+		<div th:if="${#fields.hasErrors('firstName')}"
+			th:errors="*{firstName}"></div>
+
+		<div>
+			<label>Lastname</label> <input th:field="*{lastName}" type="text">
+		</div>
+		<div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+
+		<div>
+			<label>Email</label> <input th:field="*{email}" type="text">
+		</div>
+		<div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+
+		<div>
+			<label>Gender</label> <select th:field="*{gender}">
+				<option value="">Select Gender</option>
+				<option th:each="gender : ${T(main.enums.Gender).values()}"
+					th:value="${gender}" th:text="${gender}"></option>
+			</select>
+		</div>
+		<div th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
+		<div>
+			<label>Birth Date</label>
+			<div>
+				<input th:field="*{birthDate}" type="date">
+			</div>
+		</div>
+		<div th:if="${#fields.hasErrors('birthDate')}"
+			th:errors="*{birthDate}"></div>
+		<div>
+			<label>Password</label> <input th:field="*{password}" type="password">
+		</div>
+
+		<div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+		</div>
+
+		<div>
+			<label>Confirm Password</label> <input th:field="*{confirmPassword}"
+				type="password">
+		</div>
+		<div th:if="${#fields.hasErrors('confirmPassword')}"
+			th:errors="*{confirmPassword}"></div>
+		<div>
+			<button type="submit">Sign Up</button>
 		</div>
 		<div>
-			<label>Password</label> 
-			<input type="text" th:required="true"name="password"><br>
+			Already have an account? <a th:href="@{/login}">Login</a>
 		</div>
-		<button type="submit">Login</button>
 	</form>
 </body>
 </html>
