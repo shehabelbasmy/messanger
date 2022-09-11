@@ -9,5 +9,7 @@
 	<changeSet id="add-blocked-field-to-profile-entity" author="shehabelbasmy">
 		<sqlFile path="/db/changelog/changes/structure/alters/add-blocked-field-to-profile-entity.sql" />
 	</changeSet>
-	
+	<changeSet id="change-datatype-of-password-on-table-user" author="shehabelbasmy">
+		<sqlFile path="/db/changelog/changes/structure/alters/change-datatype-of-password-on-table-user.sql" />
+	</changeSet>
 </databaseChangeLog>
